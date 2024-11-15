@@ -1,23 +1,14 @@
-import React from 'react';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import Banner from '../../components/Banner';
+const ShowPage = () => {
+  const router = useRouter();
+  const { id } = router.query;
 
-export const metadata = {
-  title: "tvLoco",
-  description: "tvLoco",
+  if (!id) {
+    return <div>Loading...</div>; // Show a loading state while the id is being resolved
+  }
+
+  return <div>Showing details for ID: {id}</div>;
 };
 
-export default function ShowPage() {
-
-  return (
-    <>
-      <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <link rel="icon" href="/favicon.png" type="image/png" />
-      </Head>
-    </>
-  )
-}
+export default ShowPage;

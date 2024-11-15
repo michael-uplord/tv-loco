@@ -46,6 +46,7 @@ body {
     justify-content: center;
     width: 100%;
     max-width: 120px;
+    aspect-ratio: 17 / 25;
 
     &:after {
       content: '';
@@ -60,6 +61,12 @@ body {
 
     img {
       border-radius: 0.5rem;
+      position: absolute;
+      left: 0;
+      top: 0;
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
     }
 
     svg {

@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import Banner from '../components/Banner';
 import Svg from '../components/Svg';
@@ -29,7 +28,7 @@ export default function Home() {
         <meta name="description" content={metadata.description} />
         <link rel="icon" href="/favicon.png" type="image/png" />
       </Head>
-      <Banner onQueryChange={handleQueryChange} />
+      <Banner title={"Find your TV series"} onQueryChange={handleQueryChange} showSearch={true} />
       <div className="">
         <div className="container">
           {loading ? (
