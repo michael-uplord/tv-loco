@@ -1,17 +1,12 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
-const Svg = ({ name, width, height, className, color }) => {
+const Svg = ({ name, width = 20, height = 20, className = "", color = "" }) => {
   const SvgIcon = React.lazy(() => import(`../../assets/${name}.svg`));
 
   return (
-    <React.Suspense>
-      <SvgIcon
-        width={width}
-        height={height}
-        className={className}
-        color={color}
-      />
-    </React.Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
+      <SvgIcon width={width} height={height} className={className} color={color} />
+    </Suspense>
   );
 };
 

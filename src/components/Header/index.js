@@ -1,7 +1,7 @@
 import Svg from '../Svg';
 import styles from "./style.module.scss";
 
-export default function Header({ data }) {
+export default function Header() {
   return (
     <div className={styles.header}>
       <div className={`container ${styles.container}`}>

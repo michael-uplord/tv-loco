@@ -1,23 +1,21 @@
-import { useState } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import Svg from '../Svg';
-import styles from "./style.module.scss";
+import styles from './style.module.scss';
 
 export default function Search({ onQueryChange, className }) {
-  const [timeoutId, setTimeoutId] = useState(null);
+  const timeoutRef = useRef(null);
 
-  const handleInputChange = (event) => {
+  const handleInputChange = useCallback((event) => {
     const searchQuery = event.target.value;
 
-    if (timeoutId) {
-      clearTimeout(timeoutId);
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
     }
 
-    const newTimeoutId = setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       onQueryChange(searchQuery);
     }, 500);
-
-    setTimeoutId(newTimeoutId);
-  };
+  }, [onQueryChange]);
 
   return (
     <div className={`${styles.searchBar} ${className}`}>

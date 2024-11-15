@@ -1,3 +1,4 @@
+import React from 'react';
 import Svg from '../Svg';
 import styles from "./style.module.scss";
 

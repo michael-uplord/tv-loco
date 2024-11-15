@@ -9,7 +9,7 @@ import Svg from '../components/Svg';
 import { fetchShows } from '../store/showsStore';
 
 export const metadata = {
-  title: "tvLoco",
+  title: "tvLoco - Show Search",
   description: "tvLoco",
 };
 
@@ -28,7 +28,7 @@ export default function Home() {
         <meta name="description" content={metadata.description} />
         <link rel="icon" href="/favicon.png" type="image/png" />
       </Head>
-      <Banner title={"Find your TV series"} onQueryChange={handleQueryChange} showSearch={true} />
+      <Banner title={"Find your TV series"} subtitle={"Enter a series below"} onQueryChange={handleQueryChange} showSearch={true} />
       <div className="">
         <div className="container">
           {loading ? (

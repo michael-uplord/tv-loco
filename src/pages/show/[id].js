@@ -1,15 +1,9 @@
 import Head from 'next/head';
 import Banner from '../../components/Banner';
+import { removeHTMLTags } from '../../utils';
 
-export const metadata = {
-  title: "tvLoco",
-  description: "tvLoco",
-};
-
-export async function getServerSideProps(context) {
-  const { id } = context.params;
-
-  const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
+export async function getServerSideProps({ params }) {
+  const res = await fetch(`https://api.tvmaze.com/shows/${params.id}`);
   const show = await res.json();
 
   return {
@@ -18,11 +12,14 @@ export async function getServerSideProps(context) {
 }
 
 export default function ShowPage({ show }) {
+  const pageTitle = `tvLoco - ${show.name}`;
+  const cleanDescription = removeHTMLTags(show.summary) || "tvLoco";
+
   return (
     <>
       <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
+        <title>{pageTitle}</title>
+        <meta name="description" content={cleanDescription} />
         <link rel="icon" href="/favicon.png" type="image/png" />
       </Head>
       <Banner title={show.name} />
