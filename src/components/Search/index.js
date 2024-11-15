@@ -13,9 +13,7 @@ export default function Search({ onQueryChange, className }) {
     }
 
     const newTimeoutId = setTimeout(() => {
-      if (searchQuery) {
-        onQueryChange(searchQuery);
-      }
+      onQueryChange(searchQuery);
     }, 500);
 
     setTimeoutId(newTimeoutId);

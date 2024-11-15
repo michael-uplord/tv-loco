@@ -23,10 +23,14 @@ const showsSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    setQuery(state, action) {
+      state.query = action.payload;
+    },
   },
 });
 
 export const fetchShows = (query = null) => async (dispatch) => {
+  dispatch(showsSlice.actions.setQuery(query));
   dispatch(showsSlice.actions.showsStart());
 
   try {
@@ -35,6 +39,7 @@ export const fetchShows = (query = null) => async (dispatch) => {
       throw new Error('Network response was not ok');
     }
     const result = await response.json();
+    await new Promise(resolve => setTimeout(resolve, 600));
     dispatch(showsSlice.actions.showsSuccess(result));
   } catch (error) {
     dispatch(showsSlice.actions.showsFailure(error.message));
