@@ -19,7 +19,7 @@ export default function Search({ onQueryChange, className }) {
 
   return (
     <div className={`${styles.searchBar} ${className}`}>
-      <input type="text" placeholder="Search..." onChange={handleInputChange} />
+      <input type="search" placeholder="Search..." onChange={handleInputChange} />
       <Svg name="magnifying-glass-solid" width={20} height={20} />
     </div>
   );
