@@ -1,0 +1,31 @@
+:root {
+  --heading-font: "DM Sans", Arial, sans-serif;
+  --body-font: Arial, sans-serif;
+
+  --success-color: #29a027;
+  --warning-color: #fc0;
+  --error-color: #dd2121;
+  --info-color: #1164cc;
+
+  --primary-color: #dd2121;
+  --primary-color-hover: #b01a1a;
+  --primary-color-text: #fff;
+
+  --secondary-color: #333;
+  --secondary-color-hover: #111;
+  --secondary-color-text: #fff;
+
+  --background-color: #fff;
+  --heading-color: #121110;
+  --text-color: #312e2c;
+  --border-color: #ddd;
+  --border-color-hover: #b0b0b0;
+
+  @media (prefers-color-scheme: dark) {
+    --background-color: #0d0d0d;
+    --heading-color: #fff;
+    --text-color: #bdc1c6;
+    --border-color: #2b2b2b;
+    --border-color-hover: #555;
+  }
+}

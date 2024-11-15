@@ -1,0 +1,19 @@
+.footer {
+  padding: 2rem 0;
+
+  .logo {
+    color: var(--heading-color);
+  }
+
+  p {
+    font-size: 0.875rem;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+}
