@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import Banner from '../../components/Banner';
 
@@ -17,7 +18,6 @@ export default function ShowPage() {
         <meta name="description" content={metadata.description} />
         <link rel="icon" href="/favicon.png" type="image/png" />
       </Head>
-      <Banner />
     </>
   )
 }
