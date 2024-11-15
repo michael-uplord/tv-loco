@@ -17,7 +17,7 @@ const showSlice = createSlice({
     },
     showSuccess(state, action) {
       state.loading = false;
-      state.shows = action.payload;
+      state.show = action.payload;
     },
     showFailure(state, action) {
       state.loading = false;
@@ -27,8 +27,7 @@ const showSlice = createSlice({
 });
 
 export const fetchShow = (id = null) => async (dispatch) => {
-  dispatch(showSlice.actions.setQuery(query));
-  dispatch(showSlice.actions.showsStart());
+  dispatch(showSlice.actions.showStart());
 
   try {
     const response = await fetch(`https://api.tvmaze.com/shows/${id}`);
@@ -37,9 +36,9 @@ export const fetchShow = (id = null) => async (dispatch) => {
     }
     const result = await response.json();
     await new Promise(resolve => setTimeout(resolve, 600));
-    dispatch(showSlice.actions.showsSuccess(result));
+    dispatch(showSlice.actions.showSuccess(result));
   } catch (error) {
-    dispatch(showSlice.actions.showsFailure(error.message));
+    dispatch(showSlice.actions.showFailure(error.message));
   }
 };
 

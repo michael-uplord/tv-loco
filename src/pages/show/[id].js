@@ -1,14 +1,40 @@
-import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Head from 'next/head';
 
-const ShowPage = () => {
-  const router = useRouter();
-  const { id } = router.query;
+import Banner from '../../components/Banner';
 
-  if (!id) {
-    return <div>Loading...</div>; // Show a loading state while the id is being resolved
-  }
+import { fetchShow } from '../../store/showStore';
 
-  return <div>Showing details for ID: {id}</div>;
+export const metadata = {
+  title: "tvLoco",
+  description: "tvLoco",
 };
 
-export default ShowPage;
+export async function getServerSideProps(context) {
+  const { id } = context.params;
+
+  return {
+    props: { id },
+  };
+}
+
+export default function ShowPage({ id }) {
+  const dispatch = useDispatch();
+  const { show, loading, error } = useSelector((state) => state.show);
+
+  useEffect(() => {
+    dispatch(fetchShow(id));
+  }, [dispatch]);
+
+  return (
+    <>
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+      </Head>
+      <Banner title={show.name} />
+    </>
+  )
+}
