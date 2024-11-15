@@ -1,10 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
-
 import Banner from '../../components/Banner';
-
-import { fetchShow } from '../../store/showStore';
 
 export const metadata = {
   title: "tvLoco",
@@ -14,19 +9,15 @@ export const metadata = {
 export async function getServerSideProps(context) {
   const { id } = context.params;
 
+  const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
+  const show = await res.json();
+
   return {
-    props: { id },
+    props: { show },
   };
 }
 
-export default function ShowPage({ id }) {
-  const dispatch = useDispatch();
-  const { show, loading, error } = useSelector((state) => state.show);
-
-  useEffect(() => {
-    dispatch(fetchShow(id));
-  }, [dispatch]);
-
+export default function ShowPage({ show }) {
   return (
     <>
       <Head>
@@ -36,5 +27,5 @@ export default function ShowPage({ id }) {
       </Head>
       <Banner title={show.name} />
     </>
-  )
+  );
 }
