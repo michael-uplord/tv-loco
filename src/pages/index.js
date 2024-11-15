@@ -36,7 +36,7 @@ export default function Home() {
           <p>No shows were found</p>
           <div className="shows">
             {shows.map((data, index) => (
-              <Link href={`/show/${data.show.id}`} key={index}>
+              <Link href={`/show/${data.show.id}`} key={index} className="show">
                 <div className="image">
                   {data.show.image?.original ? (
                     <Image
